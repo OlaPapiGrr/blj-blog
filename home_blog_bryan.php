@@ -8,8 +8,8 @@
     <title>Blog</title>
 </head>
 <body class="container_home container">
-    <div class="title title_home">
-        <h1 >Blog</h1>
+    <div class="title_home">
+        <h1 class="title">Blog</h1>
     </div>
     <div class="nav_home">
         <?php
