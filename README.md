@@ -1,2 +1,2 @@
-# Krasser BLJ Blog von Bryan
+# Krasser Blog von Bryan
 Ein blog programiert im BLJ mit php
