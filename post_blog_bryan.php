@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,39 +20,50 @@
     <form class="text_post" method="POST">
         <div>
             <h3 class="post_name">User</h3>
-            <input name="name" class="post_name" type=text placeholder="Gib deinen Username ein" value=<?php $name ?? ''?>>
+            <input name="name" class="post_name" type=text placeholder="Gib deinen Username ein" value="<?php $name ?? ''?>"></input>
+            
             <h3 class="post_titel">Titel</h3>
-            <input name="title" class="post_titel" type=text placeholder="Gib einen Titel ein" value=<?php $titel ?? ''?>>
+            <input name="title" class="post_titel" type=text placeholder="Gib einen Titel ein" value="<?php $title ?? ''?>"></input>
+            
+            <h3 class="post_link">Link</h3>
+            <input name="url" class="post_link" type=text placeholder="Gib einen Link ein" value="<?php $url ?? ''?>"></input>
+            
             <h3 class="post_nachricht">Nachricht</h3>
-            <textarea name="post" cols="40" rows="6" maxlenght="1000" class="post_nachricht" type=text 
-                      placeholder="Gib eine Nachricht ein (max. 1000 Zeichen)" value=<?php $nachricht ?? ''?>></textarea>
-            <input class="post_button" type="submit" value="Posten">
+            <textarea class="post_nachricht" name="post" cols="40" rows="6" maxlenght="1000" class="post_nachricht" type=text 
+                      placeholder="Gib eine kurze Nachricht ein (max. 1000 Zeichen)" value="<?php $nachricht ?? ''?>"></textarea><br>
+            
+                      <input class="post_button" type="submit" value="Posten">
         </div>
     </form>
     <?php
-        
-
-        if($_Server['REQUEST_METHOD'] === 'POST') {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'] ?? '';
+            $name = htmlspecialchars($name);
             $title = $_POST['title'] ?? '';
+            $title = htmlspecialchars($title);
             $nachricht = $_POST['post'] ?? '';
+            $nachricht = htmlspecialchars($nachricht);
+            $url = $_POST['url'] ?? '';
+            $url = filter_var($url, FILTER_SANITIZE_URL);
 
             if($name === ''){
                 echo('<p class="error-box">Bitte geben Sie einen Namen ein.</p>');
             }
-            if($title === ''){
+            elseif($title === ''){
                 echo('<p class="error-box">Bitte geben Sie einen Titel ein.</p>');
             }
-            if($nachricht === ''){
+            elseif($nachricht === ''){
                 echo('<p class="error-box">Bitte geben Sie eine Nachricht ein.</p>');
-            }
+            } elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+                echo('<p class="error-box">Bitte geben Sie eine gültige URL ein.</p>');
+            } else{
 
             $dbConnection = new PDO('mysql:host=localhost;dbname=post', 'root', '');
-            $stmt = $dbConnection->prepare('INSERT INTO posts (created_by, created_at, post_title, post_text)
-                                                VALUES(:user, now(), :titel, :nachricht)');
-            $stmt->execute([':user' => $name, ':titel' => $titel, ':nachricht' => $nachricht]);
+            $stmt = $dbConnection->prepare('INSERT INTO posts (created_by, created_at, post_title, post_text, url)
+                                                VALUES(:user, now(), :titel, :nachricht, :url)');
+            $stmt->execute([':user' => $name, ':titel' => $title, ':nachricht' => $nachricht, ':url' => $url]);
+            }
         }
     ?>
-
 </body>
 </html>
