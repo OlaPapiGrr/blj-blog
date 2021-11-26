@@ -1,4 +1,33 @@
+<?php
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['name'] ?? '';
+            $name = htmlspecialchars($name);
+            $title = $_POST['title'] ?? '';
+            $title = htmlspecialchars($title);
+            $nachricht = $_POST['post'] ?? '';
+            $nachricht = htmlspecialchars($nachricht);
+            $url = $_POST['url'] ?? '';
+            $url = filter_var($url, FILTER_SANITIZE_URL);
 
+            if($name === ''){
+                echo('<p class="error-box">Bitte geben Sie einen Namen ein.</p>');
+            }
+            elseif($title === ''){
+                echo('<p class="error-box">Bitte geben Sie einen Titel ein.</p>');
+            }
+            elseif($nachricht === ''){
+                echo('<p class="error-box">Bitte geben Sie eine Nachricht ein.</p>');
+            } elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE && $url !== '') {
+                echo('<p class="error-box">Bitte geben Sie eine gültige URL ein.</p>');
+            } else{
+
+            $dbConnection = new PDO('mysql:host=localhost;dbname=post', 'root', '');
+            $stmt = $dbConnection->prepare('INSERT INTO posts (created_by, created_at, post_title, post_text, url)
+                                                VALUES(:user, now(), :titel, :nachricht, :url)');
+            $stmt->execute([':user' => $name, ':titel' => $title, ':nachricht' => $nachricht, ':url' => $url]);
+            }
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,35 +64,6 @@
                       <input class="post_button" type="submit" value="Posten">
         </div>
     </form>
-    <?php
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name = $_POST['name'] ?? '';
-            $name = htmlspecialchars($name);
-            $title = $_POST['title'] ?? '';
-            $title = htmlspecialchars($title);
-            $nachricht = $_POST['post'] ?? '';
-            $nachricht = htmlspecialchars($nachricht);
-            $url = $_POST['url'] ?? '';
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-
-            if($name === ''){
-                echo('<p class="error-box">Bitte geben Sie einen Namen ein.</p>');
-            }
-            elseif($title === ''){
-                echo('<p class="error-box">Bitte geben Sie einen Titel ein.</p>');
-            }
-            elseif($nachricht === ''){
-                echo('<p class="error-box">Bitte geben Sie eine Nachricht ein.</p>');
-            } elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE && $url !== '') {
-                echo('<p class="error-box">Bitte geben Sie eine gültige URL ein.</p>');
-            } else{
-
-            $dbConnection = new PDO('mysql:host=localhost;dbname=post', 'root', '');
-            $stmt = $dbConnection->prepare('INSERT INTO posts (created_by, created_at, post_title, post_text, url)
-                                                VALUES(:user, now(), :titel, :nachricht, :url)');
-            $stmt->execute([':user' => $name, ':titel' => $title, ':nachricht' => $nachricht, ':url' => $url]);
-            }
-        }
-    ?>
+    
 </body>
 </html>

@@ -43,7 +43,7 @@ $otherblogs = $stmt->fetchAll();
         <?php } ?>
     </div>
     <div class="home_big_title">
-        <p class="home_wellcome">Hertzlich Willkommen zu</p>
+        <p class="home_wellcome">Herzlich Willkommen zu</p>
         <p class="home_wellcome2">Bryan's überkrasser Blog </p>
         <img class="home_gif" src="https://media2.giphy.com/media/UTMWtgccng4QJGknlJ/giphy.gif">
     </div>

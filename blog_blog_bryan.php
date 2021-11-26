@@ -24,11 +24,11 @@
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             ]);
-            ?>
+        ?>
             <div class="post_box_position">
                 <?php
-                $stmt = $pdo->query('SELECT * FROM `posts`');
-                foreach($stmt->fetchAll() as $x){ 
+                    $stmt = $pdo->query('SELECT * FROM `posts`');
+                    foreach($stmt->fetchAll() as $x){ 
                 ?>
                     <div class="post_box">
                         <div class="blog_created_by"><?php echo($x['created_by'])?></div>
