@@ -1,44 +1,53 @@
+<?php
+
+$pdo2 = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_dagomez', 'd041e_dagomez', '54321_Db!!!', [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+]);
+
+$stmt = $pdo2->query('SELECT url, description FROM urls order by description asc');
+$otherblogs = $stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet_blog_bryan.css">
-    <title>Blog</title>
+    <title>Home</title>
 </head>
+
 <body class="container_home container">
     <div class="title_home">
-        <h1 class="title">Bryan's überkrasser Blog</h1>
+        <h1 class="title">Home</h1>
     </div>
     <div class="nav_home">
         <?php
-            include 'include/nav_blog_bryan.php';
-
-            $user = 'root';
-            $password = '';
-            $database = 'post';
-            
-            $pdo = new PDO('mysql:host=localhost;dbname=' . $database, $user, $password, [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            ]);
-            ?>
-            <div class="post_box_position">
-                <?php
-                $stmt = $pdo->query('SELECT * FROM `posts`');
-                foreach($stmt->fetchAll() as $x){ 
-                ?>
-                    <div class="post_box">
-                        <div class="blog_created_by"><?php echo($x['created_by'])?></div>
-                        <div class="blog_post_title"><?php echo($x['post_title'])?></div>
-                        <div class="blog_created_at"><?php echo($x['created_at'])?></div>
-                        <div class="blog_post_text"><?php echo($x['post_text'])?></div>
-                        
-                    </div>
-                <?php } ?>
-            </div>
+        include 'include/nav_blog_bryan.php';
+        ?>
     </div>
+    <div class="home_others">
+        <div class="home_others_title">
+            <p>Andere Blogs</p>
+        </div>
+        <?php
+        $sql = "SELECT description, url FROM urls ORDER BY description asc";
+        foreach ($pdo2->query($sql) as $row) {
+            $link = $row['url'];
+            $description = $row['description'];
+        ?>
+            <div><?php echo "<a href='" . $link . "'class='otherblogs'>" . $description . "</a><br><br>"; ?></div>
+        <?php } ?>
+    </div>
+    <div class="home_big_title">
+        <p class="home_wellcome">Hertzlich Willkommen zu</p>
+        <p class="home_wellcome2">Bryan's überkrasser Blog </p>
+        <img class="home_gif" src="https://media2.giphy.com/media/UTMWtgccng4QJGknlJ/giphy.gif">
+    </div>
+
 </body>
+
 </html>

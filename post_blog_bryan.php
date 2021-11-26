@@ -25,8 +25,8 @@
             <h3 class="post_titel">Titel</h3>
             <input name="title" class="post_titel" type=text placeholder="Gib einen Titel ein" value="<?php $title ?? ''?>"></input>
             
-            <h3 class="post_link">Link</h3>
-            <input name="url" class="post_link" type=text placeholder="Gib einen Link ein" value="<?php $url ?? ''?>"></input>
+            <h3 class="post_link_title">Link</h3>
+            <input name="url" class="post_link" type=text placeholder="Gib einen Link ein (max. 100 Zeichen)" value="<?php $url ?? ''?>"></input>
             
             <h3 class="post_nachricht">Nachricht</h3>
             <textarea class="post_nachricht" name="post" cols="40" rows="6" maxlenght="1000" class="post_nachricht" type=text 
@@ -54,7 +54,7 @@
             }
             elseif($nachricht === ''){
                 echo('<p class="error-box">Bitte geben Sie eine Nachricht ein.</p>');
-            } elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+            } elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE && $url !== '') {
                 echo('<p class="error-box">Bitte geben Sie eine gültige URL ein.</p>');
             } else{
 

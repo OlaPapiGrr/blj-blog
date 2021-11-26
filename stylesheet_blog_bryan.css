@@ -7,13 +7,17 @@
 }
 
 
-.container_home{
+.container_blog{
     grid-template-columns: 50% 50%;
     grid-template-rows: 120px 50px ;
 }
 .container_post{
     grid-template-columns: 100%;
     grid-template-rows: 120px 50px 100px 100px 100px auto auto;
+}
+.container_home{
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 120px 50px auto;
 }
 
 .title{
@@ -28,12 +32,16 @@
 }
 
 
-.title_home{
+.title_blog{
     grid-column: 1/3;
     grid-row: 1/2;
 }
 
 .title_post{
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+.title_home{
     grid-column: 1/3;
     grid-row: 1/2;
 }
@@ -51,13 +59,18 @@
     padding-bottom: 10px;
 }
 
+.nav_blog{
+    grid-column: 1/3;
+    grid-row: 2/3;
+}
+
 .nav_home{
     grid-column: 1/3;
     grid-row: 2/3;
 }
 
 .nav_post{
-    grid-column: 1/3;
+    grid-column: 1/2;
     grid-row: 2/3;
 }
 
@@ -87,7 +100,13 @@ a:hover, a:active{
     grid-row: 4/5;
 }
 
-.post_titel{
+.post_link{
+    grid-column: 1/2;
+    grid-row: 5/6;
+    width: 225px;
+}
+
+.post_link_title{
     grid-column: 1/2;
     grid-row: 5/6;
 }
@@ -118,7 +137,7 @@ a:hover, a:active{
 
 .post_box{
     height: 250px;
-    width: 60%;
+    width: 600px;
     border: royalblue 3px solid;
     border-radius: 15px; 
     margin-bottom: 10px;
@@ -166,7 +185,57 @@ a:hover, a:active{
     margin-top: 10px;
 }
 
-.blog_url{
+.blog_url{ 
+    border-radius: 10px;
+    max-width: 385px;
+    max-height: 230px;
+    margin-left: 315px;
+    margin-top: -20px;
+}
+
+.home_others{
+    font-family: Arial, Helvetica, sans-serif;
+    color: royalblue;
+    grid-column: 2/3;
+    grid-row: 3/4;
+    text-align: center;
+    border: royalblue 3px solid;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.home_others_title{
+    font-size:larger;
+    font-weight: bolder;
+}
+
+.home_gif{
+    grid-column: 1/2;
+    grid-row: 3/4;
+    width: auto;
+    margin-left: 70px;
+}
+
+.home_big_title{
+    font-family: Arial, Helvetica, sans-serif;
+    color: royalblue;
+    grid-column: 1/2;
+    grid-row: 3/4;
     
 }
 
+.home_wellcome{
+    position: absolute;
+    font-size: 30px;
+    margin-top: 150px;
+    margin-left: 250px;
+}
+
+.home_wellcome2{
+    position: absolute;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 60px;
+}
