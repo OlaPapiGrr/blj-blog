@@ -19,9 +19,22 @@
      } else if (isset($_POST['post-id-down'])) {
         $id  = $_POST['post-id-down'];
         $pdo->exec("UPDATE posts set votes = votes - 1 where id = " . $id);
-
      }
+     if(isset($_POST['comment-id'])) {
+        $idComment  = $_POST['comment-id'];
+        $comment = $_POST['comment_block'] ?? '';
+        $comment = htmlspecialchars($comment);
+        if($comment !== ''){ 
+        $stmt = $pdo->prepare('INSERT INTO comments (comment, id, Time)
+                                                VALUES(:comment, :id, now())');
+            $stmt->execute([':comment' => $comment, ':id' => $idComment]);
+        }
+     }   
+     
 }
+
+$stmt = $pdo->query('SELECT * FROM `comments` ORDER BY `Time` DESC');
+$comments = $stmt->fetchAll();
 
 
 
@@ -64,17 +77,41 @@
             foreach($stmt->fetchAll() as $x){ 
         ?>
             <div class="post_box">
-                <div class="blog_created_by"><?php echo($x['created_by'])?></div>
-                <div class="blog_post_title"><?php echo($x['post_title'])?></div>
-                <div class="blog_created_at"><?php echo($x['created_at'])?></div>
-                <div class="blog_post_text"><?php echo($x['post_text'])?></div>
-                <div class="blog_url"><?php echo('<img class="blog_url" src=' .$x['url'] . '>' )?></div>
+                <div>
+                    <div class="blog_created_by"><?php echo($x['created_by'])?></div>
+                    <div class="blog_post_title"><?php echo($x['post_title'])?></div>
+                    <div class="blog_created_at"><?php echo($x['created_at'])?></div>
+                    <div class="blog_post_text"><?php echo($x['post_text'])?></div>
+                    <div class="blog_url"><?php echo('<img class="blog_url" src=' .$x['url'] . '>' )?></div>
+                    <div class="blog_comments_title"><p>Kommentare</p></div>
+                    <form name="comments_form" method="POST">
+                        <input class="blog_comments_block" type="text" placeholder="Schreib einen Kommentar" name="comment_block">
+                        <input type="hidden" name="comment-id" value="<?= $x['id']?>">
+                    </form>
+                    <div class="blog_comments_position">
+                    <?php 
+                        foreach($comments as $comment){
+                            if($comment['id'] === $x['id']){
+                                if($comment !== ''){
+                                    $text = $comment['comment'];
+                                    $breaktext = wordwrap($text, 70, "\n", true)
+                                ?>
+                                <div class="blog_comment"><?php echo($breaktext);?><br></div>
+                                <?php
+                                }
+                            }
+                        }
+                    ?>
+                    </div>
+                    
+
+                </div>
             </div>
-            <div>
+        <div>
             <div class="blog_votes"><?php echo($x['votes'])?></div>
-            </div>
+        </div>
             <div>
-                <form name="up-form" method="POST" action="blog_blog_bryan.php">
+                <form name="up-form" method="POST">
                     <input  class="blog_vote_up" type="image" value="up" name="up-button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Green-Up-Arrow.svg/1200px-Green-Up-Arrow.svg.png">
                     <input type="hidden" name="post-id-up" value="<?= $x['id']?>">
                 </form>
@@ -82,15 +119,12 @@
                     <input  class="blog_vote_down" type="image" value="down" name="down-button" src="https://lh3.googleusercontent.com/proxy/kLfULd46pR4u_P7e-9KXRDJeKVeYGaGnmjxzfN-KkfoIsmxMrK-nukvx88Y9b5Xgb71UzDp7tsrenAdG5XGEFHgG_eDdj3g">
                     <input type="hidden" name="post-id-down" value="<?= $x['id']?>">
                 </form>
-            </div>
-            <div>
-                <?php
-                    
-                ?>
-            </div>
-        <?php } ?>
-    </div>
-    <div>
+            </div>   
+            
+                <?php } ?>
+                
+        <div>
+            
    </div>
 </body>
 </html>
