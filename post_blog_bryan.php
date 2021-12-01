@@ -12,15 +12,25 @@
             if($name === ''){
                 echo('<p class="error-box">Bitte geben Sie einen Namen ein.</p>');
             }
+            elseif(strlen($name) > 15){
+                echo('<p class="error-box">Bitte geben Sie einen gültigen Namen ein (max. 15 Zeichen).</p>');
+            }
             elseif($title === ''){
                 echo('<p class="error-box">Bitte geben Sie einen Titel ein.</p>');
             }
+            elseif(strlen($title) > 10){
+                echo('<p class="error-box">Bitte geben Sie einen gültigen Titel ein (max. 10 Zeichen).</p>');
+            }
             elseif($nachricht === ''){
                 echo('<p class="error-box">Bitte geben Sie eine Nachricht ein.</p>');
-            } elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE && $url !== '') {
+            } 
+            elseif(strlen($nachricht) > 1000){
+                echo('<p class="error-box">Bitte geben Sie eine gültige Nachricht ein (max. 1000 zeichen).</p>');
+            } 
+            elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE && $url !== '') {
                 echo('<p class="error-box">Bitte geben Sie eine gültige URL ein.</p>');
-            } else{
-
+            } 
+            else{
             $dbConnection = new PDO('mysql:host=localhost;dbname=post', 'root', '');
             $stmt = $dbConnection->prepare('INSERT INTO posts (created_by, created_at, post_title, post_text, url)
                                                 VALUES(:user, now(), :titel, :nachricht, :url)');
@@ -38,6 +48,16 @@
     <title>Post</title>
 </head>
 <body class="container_post container">
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
     <header class="title_post">
         <h1 class="title title_post">Post</h1>
     </header>
@@ -49,10 +69,10 @@
     <form class="text_post" method="POST">
         <div>
             <h3 class="post_name">User</h3>
-            <input maxlenght="20" name="name" class="post_name" type=text placeholder="Gib deinen Username ein" value="<?php $name ?? ''?>"></input>
+            <input maxlenght="15" name="name" class="post_name" type=text placeholder="Gib deinen Username ein" value="<?php $name ?? ''?>"></input>
             
             <h3 class="post_titel">Titel</h3>
-            <input maxlenght="20" name="title" class="post_titel" type=text placeholder="Gib einen Titel ein" value="<?php $title ?? ''?>"></input>
+            <input maxlenght="10" name="title" class="post_titel" type=text placeholder="Gib einen Titel ein" value="<?php $title ?? ''?>"></input>
             
             <h3 class="post_link_title">Link</h3>
             <input name="url" class="post_link" type=text placeholder="Gib einen Link ein (max. 100 Zeichen)" value="<?php $url ?? ''?>"></input>

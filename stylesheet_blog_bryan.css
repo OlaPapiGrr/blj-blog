@@ -109,14 +109,17 @@ a:hover, a:active{
 
 .blog_vote_up{
     margin-top: 75px;
-    margin-left: 20px;
+    margin-left: 18px;
     position: absolute;
+    width: 30px;
 }
 
 .blog_vote_down{
-    margin-top: 150px;
-    margin-left: 10px;
+    margin-top: 140px;
+    margin-left: 18px;
     position: absolute;
+    width: 33px;
+    height: 27px;
 }
 
 .blog_votes{
@@ -124,7 +127,7 @@ a:hover, a:active{
     color: royalblue;
     font-size: 20px;
     margin-top: 113px;
-    margin-left: 23px;
+    margin-left: 27px;
     position: absolute;
 }
 
@@ -194,7 +197,8 @@ a:hover, a:active{
 }
 
 .post_box{
-    height: 250px;
+    height: auto;
+    min-height: 250px;
     width: 525px;
     border: royalblue 3px solid;
     border-radius: 15px; 
@@ -202,6 +206,7 @@ a:hover, a:active{
     margin-top: 10px;
     margin-right: 10px;
     margin-left: 75px;
+    
 }
 
 .post_box_position{

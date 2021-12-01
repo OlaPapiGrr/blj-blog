@@ -37,6 +37,16 @@
     <title>Blog</title>
 </head>
 <body class="container_blog container">
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
     <div class="title_blog">
         <h1 class="title">Bryan's überkrasser Blog</h1>
     </div>
@@ -65,11 +75,11 @@
             </div>
             <div>
                 <form name="up-form" method="POST" action="blog_blog_bryan.php">
-                    <input class="blog_vote_up" type="submit" value="up" name="up-button">
+                    <input  class="blog_vote_up" type="image" value="up" name="up-button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Green-Up-Arrow.svg/1200px-Green-Up-Arrow.svg.png">
                     <input type="hidden" name="post-id-up" value="<?= $x['id']?>">
                 </form>
                 <form name="down-form" method="POST">            
-                    <input class="blog_vote_down" type="submit" value="down" name="down-button">
+                    <input  class="blog_vote_down" type="image" value="down" name="down-button" src="https://lh3.googleusercontent.com/proxy/kLfULd46pR4u_P7e-9KXRDJeKVeYGaGnmjxzfN-KkfoIsmxMrK-nukvx88Y9b5Xgb71UzDp7tsrenAdG5XGEFHgG_eDdj3g">
                     <input type="hidden" name="post-id-down" value="<?= $x['id']?>">
                 </form>
             </div>

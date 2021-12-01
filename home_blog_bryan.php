@@ -21,6 +21,16 @@ $otherblogs = $stmt->fetchAll();
 </head>
 
 <body class="container_home container">
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
     <div class="title_home">
         <h1 class="title">Home</h1>
     </div>
