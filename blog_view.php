@@ -1,43 +1,5 @@
 <?php
- $user = 'root';
- $password = '';
- $database = 'post';
- 
- $pdo = new PDO('mysql:host=localhost;dbname=' . $database, $user, $password, [
-     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
- ]);
-
-   
- if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-     if(isset($_POST['post-id-up'])) {
-        $id  = $_POST['post-id-up'];
-       /* echo "ID: " . $id;*/
-        $pdo->exec("UPDATE posts set votes = votes + 1 where id = " . $id);
-     } else if (isset($_POST['post-id-down'])) {
-        $id  = $_POST['post-id-down'];
-        $pdo->exec("UPDATE posts set votes = votes - 1 where id = " . $id);
-     }
-     if(isset($_POST['comment-id'])) {
-        $idComment  = $_POST['comment-id'];
-        $comment = $_POST['comment_block'] ?? '';
-        $comment = htmlspecialchars($comment);
-        if($comment !== ''){ 
-        $stmt = $pdo->prepare('INSERT INTO comments (comment, id, Time)
-                                                VALUES(:comment, :id, now())');
-            $stmt->execute([':comment' => $comment, ':id' => $idComment]);
-        }
-     }   
-     
-}
-
-$stmt = $pdo->query('SELECT * FROM `comments` ORDER BY `Time` DESC');
-$comments = $stmt->fetchAll();
-
-
-
+    include 'include_php/blog_model.php'
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +8,7 @@ $comments = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet_blog_bryan.css">
+    <link rel="stylesheet" href="stylesheet_ProjektBlog.css">
     <title>Blog</title>
 </head>
 <body class="container_blog container">
@@ -65,7 +27,7 @@ $comments = $stmt->fetchAll();
     </div>
     <div class="nav_blog">
         <?php
-            include 'include/nav_blog_bryan.php';
+            include 'include_nav/nav_blog_bryan.php';
 
             
         ?>
@@ -73,8 +35,9 @@ $comments = $stmt->fetchAll();
     </div>
     <div class="post_box_position">
         <?php
-            $stmt = $pdo->query('SELECT * FROM `posts`');
-            foreach($stmt->fetchAll() as $x){ 
+           
+           
+            foreach($posts as $x){ 
         ?>
             <div class="post_box">
                 <div>

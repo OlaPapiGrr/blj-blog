@@ -1,47 +1,13 @@
 <?php
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name = $_POST['name'] ?? '';
-            $name = htmlspecialchars($name);
-            $title = $_POST['title'] ?? '';
-            $title = htmlspecialchars($title);
-            $nachricht = $_POST['post'] ?? '';
-            $nachricht = htmlspecialchars($nachricht);
-            $url = $_POST['url'] ?? '';
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-
-            if($name === ''){
-                echo('<p class="error-box">Bitte geben Sie einen Namen ein.</p>');
-            }
-            elseif(strlen($name) > 15){
-                echo('<p class="error-box">Bitte geben Sie einen gültigen Namen ein (max. 15 Zeichen).</p>');
-            }
-            elseif($title === ''){
-                echo('<p class="error-box">Bitte geben Sie einen Titel ein.</p>');
-            }
-            elseif(strlen($title) > 10){
-                echo('<p class="error-box">Bitte geben Sie einen gültigen Titel ein (max. 10 Zeichen).</p>');
-            }
-            elseif($nachricht === ''){
-                echo('<p class="error-box">Bitte geben Sie eine Nachricht ein.</p>');
-            } 
-            elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE && $url !== '') {
-                echo('<p class="error-box">Bitte geben Sie eine gültige URL ein.</p>');
-            } 
-            else{
-            $dbConnection = new PDO('mysql:host=localhost;dbname=post', 'root', '');
-            $stmt = $dbConnection->prepare('INSERT INTO posts (created_by, created_at, post_title, post_text, url)
-                                                VALUES(:user, now(), :titel, :nachricht, :url)');
-            $stmt->execute([':user' => $name, ':titel' => $title, ':nachricht' => $nachricht, ':url' => $url]);
-            }
-        }
-    ?>
+    include 'include_php/post_model.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet_blog_bryan.css">
+    <link rel="stylesheet" href="stylesheet_ProjektBlog.css">
     <title>Post</title>
 </head>
 <body class="container_post container">
@@ -60,7 +26,7 @@
     </header>
     <div class="nav_post">
         <?php
-            include 'include/nav_blog_bryan.php';
+            include 'include_nav/nav_blog_bryan.php';
         ?>
     </div>
     <form class="text_post" method="POST">

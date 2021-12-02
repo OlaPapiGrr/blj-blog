@@ -1,14 +1,6 @@
 <?php
-
-$pdo2 = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_dagomez', 'd041e_dagomez', '54321_Db!!!', [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-]);
-
-$stmt = $pdo2->query('SELECT url, description FROM urls order by description asc');
-$otherblogs = $stmt->fetchAll();
+    include 'include_php/home_model.php'
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +8,7 @@ $otherblogs = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet_blog_bryan.css">
+    <link rel="stylesheet" href="stylesheet_ProjektBlog.css">
     <title>Home</title>
 </head>
 
@@ -36,7 +28,7 @@ $otherblogs = $stmt->fetchAll();
     </div>
     <div class="nav_home">
         <?php
-        include 'include/nav_blog_bryan.php';
+        include 'include_nav/nav_blog_bryan.php';
         ?>
     </div>
     <div class="home_others">
@@ -44,8 +36,7 @@ $otherblogs = $stmt->fetchAll();
             <p>Andere Blogs</p>
         </div>
         <?php
-        $sql = "SELECT description, url FROM urls ORDER BY description asc";
-        foreach ($pdo2->query($sql) as $row) {
+        foreach ($others as $row) {
             $link = $row['url'];
             $description = $row['description'];
         ?>
