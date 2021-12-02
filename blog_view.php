@@ -27,7 +27,7 @@
     </div>
     <div class="nav_blog">
         <?php
-            include 'include_nav/nav_blog_bryan.php';
+            include 'include_nav/nav_view.php';
 
             
         ?>

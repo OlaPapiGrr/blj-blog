@@ -26,7 +26,7 @@
     </header>
     <div class="nav_post">
         <?php
-            include 'include_nav/nav_blog_bryan.php';
+            include 'include_nav/nav_view.php';
         ?>
     </div>
     <form class="text_post" method="POST">
