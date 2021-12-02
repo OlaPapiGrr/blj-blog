@@ -48,7 +48,7 @@
                     <div class="blog_url"><?php echo('<img class="blog_url" src=' .$x['url'] . '>' )?></div>
                     <div class="blog_comments_title"><p>Kommentare</p></div>
                     <form name="comments_form" method="POST">
-                        <input class="blog_comments_block text_field_blog" type="text" placeholder="Schreib einen Kommentar" name="comment_block">
+                        <input class="text_field_blog" type="text" placeholder="Schreib einen Kommentar" name="comment_block">
                         <input type="hidden" name="comment-id" value="<?= $x['id']?>">
                     </form>
                     <div class="blog_comments_position">
@@ -57,7 +57,7 @@
                             if($comment['id'] === $x['id']){
                                 if($comment !== ''){
                                     $text = $comment['comment'];
-                                    $breaktext = wordwrap($text, 70, "\n", true)
+                                    $breaktext = wordwrap($text, 78, "\n", true)
                                 ?>
                                 <div class="blog_comment"><?php echo($breaktext);?><br></div>
                                 <?php
