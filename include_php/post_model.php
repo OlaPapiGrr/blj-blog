@@ -34,7 +34,7 @@
         } elseif($name === 'hund') {
             $eastereggkey = 'hund';
         } else {
-        $dbConnection = new PDO('mysql:host=mysql2.webland.ch;dbname=post', 'd041e_bramrein', '54321_Db!!!');
+        $dbConnection = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_bramrein', 'd041e_bramrein', '54321_Db!!!');
         $stmt = $dbConnection->prepare('INSERT INTO posts (created_by, created_at, post_title, post_text, url)
                                             VALUES(:user, now(), :titel, :nachricht, :url)');
         $stmt->execute([':user' => $name, ':titel' => $title, ':nachricht' => $nachricht, ':url' => $url]);
