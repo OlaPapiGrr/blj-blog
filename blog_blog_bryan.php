@@ -85,7 +85,7 @@ $comments = $stmt->fetchAll();
                     <div class="blog_url"><?php echo('<img class="blog_url" src=' .$x['url'] . '>' )?></div>
                     <div class="blog_comments_title"><p>Kommentare</p></div>
                     <form name="comments_form" method="POST">
-                        <input class="blog_comments_block" type="text" placeholder="Schreib einen Kommentar" name="comment_block">
+                        <input class="blog_comments_block text_field_blog" type="text" placeholder="Schreib einen Kommentar" name="comment_block">
                         <input type="hidden" name="comment-id" value="<?= $x['id']?>">
                     </form>
                     <div class="blog_comments_position">
@@ -116,7 +116,7 @@ $comments = $stmt->fetchAll();
                     <input type="hidden" name="post-id-up" value="<?= $x['id']?>">
                 </form>
                 <form name="down-form" method="POST">            
-                    <input  class="blog_vote_down" type="image" value="down" name="down-button" src="https://lh3.googleusercontent.com/proxy/kLfULd46pR4u_P7e-9KXRDJeKVeYGaGnmjxzfN-KkfoIsmxMrK-nukvx88Y9b5Xgb71UzDp7tsrenAdG5XGEFHgG_eDdj3g">
+                    <input  class="blog_vote_down" type="image" value="down" name="down-button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/RedDownArrow.svg/1200px-RedDownArrow.svg.png">
                     <input type="hidden" name="post-id-down" value="<?= $x['id']?>">
                 </form>
             </div>   

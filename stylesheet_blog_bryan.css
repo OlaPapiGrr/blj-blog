@@ -43,6 +43,31 @@ a:hover, a:active{
     text-decoration: underline;
 }
 
+.text_field {
+    background: transparent;
+    border: white solid 2px;
+    border-radius: 15px;
+    height: 30px;
+    width: 300px;
+    color: white;
+    font-size: 15px;
+}
+
+::placeholder{
+    color: white;
+}
+
+textarea {
+    background: transparent;
+    border: white solid 2px;
+    color: white;
+    border-radius: 15px;
+    width: 350px;
+    height: 150px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 
 
@@ -123,10 +148,10 @@ a:hover, a:active{
 
 .blog_vote_down{
     margin-top: 140px;
-    margin-left: 16px;
+    margin-left: 19px;
     position: absolute;
-    width: 35px;
-    height: 27px;
+    width: 28px;
+    height: 30px;
 }
 
 .blog_votes{
@@ -151,16 +176,26 @@ a:hover, a:active{
 .blog_comments_title{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 10px;
-    margin-bottom: -35px;
+    margin-bottom: -45px;
     border-top: white 3px solid;
 }
 
 .blog_comments_block{
-    margin-left: 345px;
+    margin-left: 330px;
+}
+
+.text_field_blog{
+    border-radius: 15px;
+    border: white solid 2px;
+    height: 30px;
+    width: 180px;
+    background: transparent;
+    color: white;
+    font-size: 15px;
 }
 
 
@@ -257,6 +292,17 @@ a:hover, a:active{
     grid-column: 1/2;
     grid-row: 7/8;
     margin-top: 200px;
+}
+
+.post_button_style{
+    background: transparent;
+    border-radius: 15px;
+    border: white solid 2px;
+    color: white;
+    height: 30px;
+    width: 80px;
+    margin-top: 10px;
+
 }
 
 
