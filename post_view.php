@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet_ProjektBlog.css">
+    <link rel="icon" href="images/icon_blog.png">
     <title>Post</title>
 </head>
 <body class="container_post container">
@@ -38,7 +39,7 @@
             <input maxlenght="10" name="title" class="post_titel text_field" type=text placeholder="Gib einen Titel ein" value="<?php $title ?? ''?>"></input>
             
             <h3 class="post_link_title">Link</h3>
-            <input name="url" class="post_link text_field" type=text placeholder="Gib einen Link ein (max. 100 Zeichen)" value="<?php $url ?? ''?>"></input>
+            <input name="url" class="post_link text_field" type=text placeholder="Gib einen Link ein" value="<?php $url ?? ''?>"></input>
             
             <h3 class="post_nachricht">Nachricht</h3>
             <textarea class="post_nachricht" name="post" cols="40" rows="6" maxlenght="1000" class="post_nachricht text_field" type=text 

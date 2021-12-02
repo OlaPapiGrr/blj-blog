@@ -7,7 +7,7 @@
 }
 
 body{
-    background-image: url(https://thumbs.gfycat.com/FewWhimsicalCassowary-size_restricted.gif);
+    background-image: url(images/FewWhimsicalCassowary-size_restricted.gif);
 }
 
 .title{
@@ -378,4 +378,41 @@ textarea {
     text-align: center;
     margin-top: 200px;
     margin-left: 60px;
+}
+
+
+
+
+
+
+.error_gif{
+    background-image: url(images/FewWhimsicalCassowary-size_restricted.gif);
+    background-size: 100%;
+}
+
+.error_message{
+    font-size: 40px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+    color: white;
+    margin-top: 10px;
+    opacity: 0.8;
+    
+    
+    text-shadow: 0 0 25px #dd6cae ,
+                 0 0 50px #dd6cae,
+                 0 0 100px #dd6cae ,
+                 0 0 150px #dd6cae ,
+                 0 0 200px #dd6cae ;
+    animation: animate 5s linear infinite;
+}
+@keyframes animate {
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+
 }
