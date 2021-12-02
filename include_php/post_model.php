@@ -24,6 +24,9 @@
         elseif($nachricht === ''){
             echo('<p class="error-box">Bitte geben Sie eine Nachricht ein.</p>');
         } 
+        elseif(strlen($url) > 100){
+            echo('<p class="error-box">Bitte geben Sie einen gültigen Link ein (max. 100 Zeichen).</p>');
+        } 
         elseif(filter_var($url, FILTER_VALIDATE_URL) === FALSE && $url !== '') {
             echo('<p class="error-box">Bitte geben Sie eine gültige URL ein.</p>');
         } 

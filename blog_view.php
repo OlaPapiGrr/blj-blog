@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet_ProjektBlog.css">
+    <link rel="icon" href="images/icon_blog.png">
     <title>Blog</title>
 </head>
 <body class="container_blog container">
@@ -75,11 +76,11 @@
         </div>
             <div>
                 <form name="up-form" method="POST">
-                    <input  class="blog_vote_up" type="image" value="up" name="up-button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Green-Up-Arrow.svg/1200px-Green-Up-Arrow.svg.png">
+                    <input  class="blog_vote_up" type="image" value="up" name="up-button" src="images/Green-Up-Arrow.svg.png">
                     <input type="hidden" name="post-id-up" value="<?= $x['id']?>">
                 </form>
                 <form name="down-form" method="POST">            
-                    <input  class="blog_vote_down" type="image" value="down" name="down-button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/RedDownArrow.svg/1200px-RedDownArrow.svg.png">
+                    <input  class="blog_vote_down" type="image" value="down" name="down-button" src="images/RedDownArrow.svg.png">
                     <input type="hidden" name="post-id-down" value="<?= $x['id']?>">
                 </form>
             </div>   

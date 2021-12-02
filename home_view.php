@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet_ProjektBlog.css">
+    <link rel="icon" href="images/icon_blog.png">
     <title>Home</title>
 </head>
 
@@ -46,7 +47,7 @@
     <div class="home_big_title">
         <p class="home_wellcome">Herzlich Willkommen zu</p>
         <p class="home_wellcome2">Bryan's überkrasser Blog </p>
-        <img class="home_gif" src="https://media2.giphy.com/media/UTMWtgccng4QJGknlJ/giphy.gif">
+        <img class="home_gif" src="images/giphy.webp">
     </div>
 
 </body>
