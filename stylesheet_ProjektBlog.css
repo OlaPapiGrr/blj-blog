@@ -4,9 +4,6 @@
     margin-right: 10%; 
     grid-gap: 5px;
     display: grid;
-}
-
-body{
     background-image: url(images/FewWhimsicalCassowary-size_restricted.gif);
 }
 
@@ -293,7 +290,7 @@ textarea {
     font-family: Arial, Helvetica, sans-serif;
     grid-column: 1/2;
     grid-row: 7/8;
-    margin-top: 200px;
+    margin-top: 275px;
 }
 
 .post_button_style{
@@ -415,4 +412,85 @@ textarea {
         filter: hue-rotate(360deg);
     }
 
+}
+
+
+
+
+
+
+
+.easteregg_button{
+    background: black;
+    width: 5px;
+}
+
+.easteregg_home{
+    background: black;
+}
+
+.easteregg_text{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.easteregg_back{
+    border: solid white 3px;
+    border-radius: 15px;   
+}
+
+.key_button{
+    background: black;
+    border-radius: 15px;
+    border: white solid 2px;
+    color: white;
+    height: 30px;
+    width: 80px;
+    margin-top: 10px;
+    margin-left: 46%;
+    
+}
+
+
+
+
+
+
+
+
+
+
+.eastereggfound_gif1{
+    background-image: url(images/dancing-voting-day.gif);
+}
+
+
+
+.eastereggfound_text{
+    font-size: 70px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    text-shadow: 0 0 25px #dd6cae ,
+                 0 0 50px #dd6cae,
+                 0 0 100px #dd6cae ,
+                 0 0 150px #dd6cae ,
+                 0 0 200px #dd6cae ;
+    animation: animate 5s linear infinite;
+}
+@keyframes animate {
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+
+.eastereggfound_back{
+    border: solid white 3px;
+    border-radius: 15px;   
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 49%;
 }

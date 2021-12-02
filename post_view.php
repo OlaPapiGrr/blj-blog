@@ -30,6 +30,15 @@
             include 'include_nav/nav_view.php';
         ?>
     </div>
+    <div>
+        <?php
+            if($eastereggkey === 'hund'){
+        ?>
+            <form action="eastereggfound_view.php">
+                <input class="key_button" type="submit" value="Schlüssel">
+            </form>
+        <?php } ?>
+    </div>
     <form class="text_post" method="POST">
         <div>
             <h3 class="post_name">User</h3>

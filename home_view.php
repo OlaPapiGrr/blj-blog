@@ -48,6 +48,9 @@
         <p class="home_wellcome">Herzlich Willkommen zu</p>
         <p class="home_wellcome2">Bryan's überkrasser Blog </p>
         <img class="home_gif" src="images/giphy.webp">
+        <form action="easteregg_view.php">
+            <input class="easteregg_button" type="submit">
+        </form>
     </div>
 
 </body>
