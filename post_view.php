@@ -42,16 +42,16 @@
     <form class="text_post" method="POST">
         <div>
             <h3 class="post_name">User</h3>
-            <input maxlenght="15" name="name" class="post_name text_field" type=text placeholder="Gib deinen Username ein" value="<?php $name ?? ''?>"></input>
+            <input name="name" class="post_name text_field" type=text placeholder="Gib deinen Username ein" value="<?php $name ?? ''?>"></input>
             
             <h3 class="post_titel">Titel</h3>
-            <input maxlenght="10" name="title" class="post_titel text_field" type=text placeholder="Gib einen Titel ein" value="<?php $title ?? ''?>"></input>
+            <input name="title" class="post_titel text_field" type=text placeholder="Gib einen Titel ein" value="<?php $title ?? ''?>"></input>
             
             <h3 class="post_link_title">Link</h3>
             <input name="url" class="post_link text_field" type=text placeholder="Gib einen Link ein" value="<?php $url ?? ''?>"></input>
             
             <h3 class="post_nachricht">Nachricht</h3>
-            <textarea class="post_nachricht" name="post" cols="40" rows="6" maxlenght="1000" class="post_nachricht text_field" type=text 
+            <textarea class="post_nachricht" name="post" cols="40" rows="6" class="post_nachricht text_field" type=text 
                       placeholder="Gib eine kurze Nachricht ein (max. 1000 Zeichen)" value="<?php $nachricht ?? ''?>"></textarea><br>
             
             <input class="post_button post_button_style" type="submit" value="Posten">

@@ -14,14 +14,14 @@
         if($name === ''){
             echo('<p class="error-box">Bitte geben Sie einen Namen ein.</p>');
         }
-        elseif(strlen($name) > 15){
-            echo('<p class="error-box">Bitte geben Sie einen gültigen Namen ein (max. 15 Zeichen).</p>');
+        elseif(strlen($name) > 30){
+            echo('<p class="error-box">Bitte geben Sie einen gültigen Namen ein (max. 30 Zeichen).</p>');
         }
         elseif($title === ''){
             echo('<p class="error-box">Bitte geben Sie einen Titel ein.</p>');
         }
-        elseif(strlen($title) > 10){
-            echo('<p class="error-box">Bitte geben Sie einen gültigen Titel ein (max. 10 Zeichen).</p>');
+        elseif(strlen($title) > 20){
+            echo('<p class="error-box">Bitte geben Sie einen gültigen Titel ein (max. 20 Zeichen).</p>');
         }
         elseif($nachricht === ''){
             echo('<p class="error-box">Bitte geben Sie eine Nachricht ein.</p>');
